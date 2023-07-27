@@ -1,0 +1,499 @@
+
+/**
+ * common color
+ */
+body {
+	color: #1D1D1D;
+}
+.progress.nomal {
+	background-color: #ADFF2E !important;
+}
+.progress.ahead {
+	background-color: #1C00FF !important;
+	color: #FFF;
+}
+.progress.behind {
+	background-color: #FF0000 !important;
+	color: #FFF;
+}
+header h1 {
+	color: #5C6BC0;
+}
+header #version {
+	color: #5C6BC0;
+}
+header .update_datetime {
+	color: #5C6BC0;
+}
+#timetable .cell_bg {
+	background-color: #5C6BC0;
+	color: #FFF;
+}
+footer {
+	background-color: #0C0098;/* 08007F 0C0098 */
+	color: #FFF;
+}
+
+body {
+	padding: 0px;
+	margin: 0px;
+	overflow-x: hidden;
+	overflow-y: scroll;
+}
+
+#mode_monitor {
+	display: none;
+	padding: 0px;
+	margin: 0px;
+	min-width: 1200px;
+}
+
+
+header {
+	padding-top: 2px;
+}
+
+header.fixed {
+	min-width: 1050px;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	background-color: #FFF;
+	z-index: 20;
+}
+header.fixed + * {
+	margin-top: 100px;
+}
+header h1 {
+	display: inline-block;
+	font-size: 45px;
+	line-height: 120px;
+	margin: 0px 6px 0px 12px;
+}
+header #version {
+}
+header .update_datetime {
+	font-size: 16px;
+	font-weight: bold;
+}
+/* heaer, footerに.update_datetime が存在する */
+.update_datetime::before {
+	content: "更新日時：";
+}
+header #box_wrap {
+	float: right;
+	display: table;
+	border-collapse: separate;
+	border-spacing: 5px;
+}
+header .box {
+	display: table-cell;
+	vertical-align: middle;
+	border: #CFCFCF solid 1px;
+	padding: 5px;
+	margin: 3px;
+}
+header #search_wrap {
+	min-width: 310px;
+	vertical-align: top;
+	padding-top: 17px;
+}
+header input[type="checkbox"] {
+	transform: scale(1.45);
+	margin-right: 8px;
+	margin-top: 7px;
+	vertical-align: inherit !important;
+}
+header label[for="manual_search"] {
+	font-size: 18px;
+}
+header #auto_search_wrap {
+	padding: 10px 0;
+	text-align: center;
+}
+header .update_datetime {
+	font-size: 18px;
+	font-weight: bold;
+}
+header #manual_search_wrap {
+	display: none;
+	padding: 8px 0;
+	text-align: center;
+}
+header #manual_search_wrap input {
+	font-size: 18px;
+	width: 100px;
+	border: none;
+	outline: none;
+	border-bottom: 2px solid #999;
+	padding: 5px 20px 5px 10px;
+	margin: 0 7px 0 0;
+	background: url("../img/calendar.png") right center no-repeat;
+}
+header #manual_search_wrap input:focus{
+	border-bottom-color: #0A15AC;
+}
+header #manual_search_wrap select {
+	font-size: 18px;
+	padding: 5px;
+	border: none;
+	outline: none;
+	border-bottom: 2px solid #999;
+}
+header #manual_search_wrap select:focus{
+	border-bottom-color: #0A15AC;
+}
+
+header #label_wrap {
+	width: 222px;
+}
+header #label_wrap #label_not_found {
+	display: inline-block;
+	font-size: 14px;
+	vertical-align: middle;
+}
+header #label_wrap #labels {
+	display: flex;
+	flex-wrap: wrap;
+}
+header #label_wrap #labels span {
+	width: calc(50% - 6px);
+	display: inline-block;
+	padding: 1px;
+	font-size: 14px;
+	text-align: center;
+	margin: 2px;
+}
+header #label_wrap #labels span:nth-child(even) {
+	margin-right: 0;
+}
+header #progress_wrap {
+	width: 159px;
+}
+header #progress_wrap .progress {
+	display: block;
+	padding: 4px;
+	font-size: 14px;
+	text-align: center;
+	margin-bottom: 5px;
+}
+header #progress_wrap .progress:last-child {
+	margin-bottom: 0px;
+}
+
+#timetable {
+	width: 100%;
+	border-collapse: separate;
+	border-spacing: 3px;
+	margin-bottom: 20px;
+}
+#timetable thead.fixed th {
+  /* 縦スクロール時に固定する */
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  z-index: 20;
+}
+#timetable th {
+	font-size: 14px;
+	font-weight: normal;
+	background-color: #FFF;
+	padding: 0;
+}
+#timetable th:nth-child(1) {
+	width: 170px;
+}
+#timetable th:nth-child(2) {
+	width: 50px;
+}
+#timetable th:nth-child(3) {
+	width: auto;
+}
+#timetable th:nth-child(4) {
+	width: 180px;
+}
+#timetable th.times {
+	position: relative;
+}
+#timetable th.times .line {
+	position: absolute;
+	top: 17px;
+}
+#timetable th.times .line::before {
+	content: "";
+	height: 10px;
+	display: block;
+}
+#timetable th.times #start_line,
+#timetable th.times #finish_line {
+	border-left: 3px dotted navy;
+}
+#timetable th.times #current_line {
+	border-left: 3px solid red;
+	display: none;
+}
+#timetable th.times #hours {
+	display: flex;
+	justify-content: space-between; /* children : width: 100%; */
+}
+#timetable th.times #hours span {
+	display: block;
+	/* flex: 1; */
+	width: 100%;
+	border-right: 2px solid #FFF;
+	/* background-color: #fff; */
+}
+#timetable th.times span:last-child {
+	border-right-width: 0px;
+}
+#timetable tbody:after {
+	content: "";
+	height: 10px;
+	width: 100%;
+	display: block;
+}
+#timetable tbody td {
+	padding: 0;
+}
+#timetable tbody .name {
+	font-size: 22px;
+}
+#timetable tbody .type {
+	background-color: #9FA8DA;
+	color: #FFF;
+	text-align: center;
+}
+#timetable tbody .jobs {
+	background-color: #6E6E6E;
+	position: relative;
+	/* overflow: hidden; */
+	/* ↑ 計画数/実績数セルに被らないようにする場合 */
+	/*   時間セルからはみ出さないようにする */
+}
+#timetable tbody .jobs .job_wrap > * {
+	height: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+#timetable tbody .job {
+	height: auto !important;
+	white-space: nowrap;
+	z-index: 11;
+	/*
+	計画数/実績数のセルの上に重ねて表示する場合：100以上にする
+	計画数/実績数のセルの定義：#timetable tbody td.qty{ z-index }
+	*/
+}
+#timetable tbody .has_tooltip {
+	cursor: pointer;
+}
+#timetable tbody .tooltip {
+	border: 2px solid #000;
+	padding: 3px;
+	margin: 5px 0 0 5px;
+	background: rgba(255, 255, 255, 0.9);
+	height: auto !important;
+	color: #000 !important;
+	white-space: nowrap;
+	z-index: 200; /* 計画数/実績数のセルの上に重ねて表示する：100以上 */
+	display: none;
+}
+#timetable tbody a.tooltip {
+	color: blue !important;
+}
+#timetable tbody i.icon {
+	margin: 0 -3px 0 -1px;
+	padding: 0;
+}
+/* #timetable tbody .slash [class^="label"] {
+	position: relative;
+} */
+#timetable tbody [class^="label"].slash::before { /* 個別 */
+	content: '';
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	background:repeating-linear-gradient(
+		-55deg, /* 傾斜角度 */
+		#fff, #eee 1px, /* 線の色と太さ */
+		rgba(0, 0, 0, 0) 0,
+		rgba(0, 0, 0, 0) 5px /* 線の感覚 rgbaを使用して透過指定（凡例マスタで指定した背景色を表示させる）*/
+	);
+}
+/* 斜線の場合、文字の視認性を確保する */
+#timetable tbody [class^="label"].slash + .job span {
+	/* text-shadow: 1px 1px 1px #333; */
+	background: rgba(0,0,0,0.2);
+}
+#timetable tbody .jobs .j_txt {
+	display: inline;
+}
+#timetable tbody .jobs .j_txt::after {
+	content: '\A';
+  white-space: pre;
+}
+#timetable tbody .jobs .j_qty:not(:empty)::before {
+	content: '[';
+}
+#timetable tbody .jobs .j_qty:not(:empty)::after {
+	content: ']';
+}
+
+#timetable tbody td.qty {
+	border: 1px solid #CFCFCF;
+	background-color: #fff;
+	text-align: center;
+	position: relative;
+	z-index: 100;
+}
+#timetable tbody .main_qty {
+	font-size: 26px;
+	margin: 12px 0 0 0;
+	padding: 0;
+	display: inline-block;
+}
+#timetable tbody .main_qty .unit {
+	font-size: 16px;
+}
+#timetable tbody .sub_qty {
+	position: absolute;
+	top: -1px;
+	right: 2px;
+	font-size: 14px;
+}
+#timetable tbody .sub_qty::before {
+	content: "(";
+}
+#timetable tbody .sub_qty::after {
+	content: ")";
+}
+
+#template {
+	display: none;
+}
+
+#mode_monitor footer {
+	position: fixed;
+	bottom: 0;
+	right: 0;
+	width: 100%;
+	font-size: 14px;
+	text-align: right;
+	padding: 2px 10px;
+	z-index: 1000;
+}
+
+#mode_select {
+	display: none;
+	width: 600px;
+	margin: auto;
+	padding: 10px;
+}
+
+#mode_select h3 {
+	margin: 5px 0 8px 0;
+	font-size: 18px;
+	line-height: 110%;
+}
+
+#mode_select input[type="checkbox"],
+#mode_select input[type="radio"] {
+	transform: scale(1.45);
+	margin-right: 8px;
+	vertical-align: inherit !important;
+}
+
+#mode_select label {
+	cursor: pointer;
+	display: block;
+	width: 100% !important;
+	background-color: aliceblue;
+	border-bottom: gray 1px solid;
+	padding: 12px;
+	font-size: 18px;
+	line-height: 22px;
+}
+
+#mode_select label.checked {
+	background-color: #1A65A7;
+  color: #FFF;
+}
+
+#mode_select #select_factory {
+	margin: 0 0 30px 0;
+}
+
+#mode_select #select_board {
+	display: none;
+	margin: 0 0 30px 0;
+}
+
+#mode_select .board_list {
+	max-height: 300px;
+	width: calc(100% - 10px);
+	overflow-y: scroll;
+	padding: 10px 15px;
+	border: 1px solid #333;
+	display: none;
+}
+
+#mode_select .board_list a {
+	width: calc(100% - 30px) !important;
+}
+
+#mode_select a {
+	display: block;
+	width: 100%;
+	background-color: aliceblue;
+	color: #000;
+	box-shadow: 0 0 0 0 rgba(34,36,38,.15) inset;
+	border: #1A65A7 2px solid;
+	padding: 12px;
+	margin: 8px 0;
+	border-radius: 10px;
+	text-decoration: none;
+	font-size: 18px;
+	line-height: 22px;
+	text-align: center;
+}
+
+#mode_select a:hover {
+	background-color: #1A65A7;
+	color: #FFFFFF;
+}
+
+#mode_select a.basic {
+	background-color: #F0F0F0;
+	color: #333;
+	border-color: #333;
+}
+
+#mode_select a.basic:hover {
+	background-color: #333;
+	color: #FFF;
+}
+
+.hide {
+	display: none !important;
+}
+
+.txt_c {
+	text-align: center;
+}
+
+.txt_r {
+	text-align: right;
+}
+
+.float_r {
+	float: right;
+}
+
+
+#ui-datepicker-div {
+	z-index: 100 !important;
+}
