@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0">
+	<meta name="description" content="" />
+	<title>各種設定サンプル</title>
+	<link rel="stylesheet" href="css/master.css">
+	<link rel="stylesheet" href="css/parts_navi.css">
+	<link rel="stylesheet" href="css/fontello.css">
+	<script src="js/jquery-2.2.4.min.js"></script>
+	<script src="js/master.js"></script>
+	<script src="js/parts_navi.js"></script>
+</head>
+
+<body>
+
+	<div id="parts_navi">
+		<nav>
+			<i id="menu_open" class="icon icon-menu"></i>
+			<span id="system">
+				Sample System
+			</span>
+		</nav>
+		<div id="menu_wrap">
+			<menu>
+				<li id="menu_close">MENU<i class="icon icon-left-1"></i></li>
+				<li><a href="./monitor.html"><i class="icon icon-right-dir"></i>工程管理</a></li>
+				<li><a href="./master.html" id="menu_master"><i class="icon icon-right-dir"></i>各種設定</a></li>
+			</menu>
+		</div>
+	</div>
+
+
+	<header>
+		<div class="container">
+			<h1>各種設定</h1>
+			<button id="master_save" class="save button">保存</button>
+			<span class="save button test_post" ref_id="form_master">POSTテスト</span>
+		</div>
+	</header>
+
+	<main class="container">
+		<form id="form_master" method="post" action="https://ultimorx.com/sample/json.php?id=99">
+
+			<p>「POSTテスト」押下で、確認用サーバのPHPでvar_dumpします。</p>
+
+			<div class="item">
+				<div class="key">
+
+				</div>
+				<div class="val">
+					<input type="radio" name="id" id="mode_insert" value="" checked><label for="mode_insert">新規</label>
+					<input type="radio" name="id" id="mode_update" value=""><label for="mode_update">更新</label>
+				</div>
+			</div>
+
+			<div class="item">
+				<div class="key">
+					設定名
+				</div>
+				<div class="val">
+					<input type="text" class="full" value="">
+				</div>
+			</div>
+
+			<div class="item">
+				<div class="key">
+					工場
+				</div>
+				<div class="val">
+					<select>
+						<option value="">未選択</option>
+						<option value="">工場１</option>
+					</select>
+				</div>
+			</div>
+
+			<div class="item">
+				<div class="key">
+					言語
+				</div>
+				<div class="val">
+					<input type="radio" name="lang" id="lang1" value="ja"><label for="lang1">日本語</label>
+					<input type="radio" name="lang" id="lang2" value="en"><label for="lang2">英語</label>
+				</div>
+			</div>
+
+			<div class="item">
+				<div class="key">
+					テーマ
+				</div>
+				<div class="val">
+					<input type="radio" name="theme" id="theme1" value="dark"><label for="theme1">ダーク</label>
+					<input type="radio" name="theme" id="theme2" value="light"><label for="theme2">ライト</label>
+				</div>
+			</div>
+
+			<div class="item">
+				<div class="key">
+					直の切替タイミング
+				</div>
+				<div class="val">
+					直開始<input type="number" name="" step="1" min="0" max="120">分前に切替え
+				</div>
+			</div>
+
+			<div class="item">
+				<div class="key">
+					グラフ表示時間
+				</div>
+				<div class="val">
+					直開始<input type="number" name="" step="1" min="1" max="24">時間分を表示
+				</div>
+			</div>
+
+			<div class="mst_table box_margin" id="mst_process_wrap">
+				<table id="mst_process">
+					<caption>表示工程</caption>
+					<thead>
+						<tr>
+							<th>表示順</th>
+							<th>工程コード</th>
+							<th>工程名</th>
+							<th>操作</th>
+						</tr>
+					</thead>
+					<tbody class="list">
+						<tr>
+							<td><input type="text" class="full sort" name="process[][sort]" value="1" readonly></td>
+							<td><input type="text" class="full" name="process[][code]" value="p_code1"></td>
+							<td><input type="text" class="full" name="process[][name]" value="工程名1"></td>
+							<td>
+								<div class="hide">
+									<input type="text" class="rec_id" name="process[][id]" value="100">
+									<input type="text" class="del_flg" name="process[][del_flg]" value="0">
+								</div>
+								<button class="delete"></button>
+								<button class="up"></button>
+								<button class="down"></button>
+							</td>
+						</tr>
+						<tr>
+							<td><input type="text" class="full sort" name="process[][sort]" value="2" readonly></td>
+							<td><input type="text" class="full" name="process[][code]" value="p_code2"></td>
+							<td><input type="text" class="full" name="process[][name]" value="工程名2"></td>
+							<td>
+								<div class="hide">
+									<input type="text" class="rec_id" name="process[][id]" value="200">
+									<input type="text" class="del_flg" name="process[][del_flg]" value="0">
+								</div>
+								<button class="delete"></button>
+								<button class="up"></button>
+								<button class="down"></button>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+				<button class="insert"></button>
+				<table class="cache"></table>
+				<table class="template">
+					<tr>
+						<td><input type="text" class="full sort" org_name="process[][sort]" readonly></td>
+						<td><input type="text" class="full" org_name="process[][code]"></td>
+						<td><input type="text" class="full" org_name="process[][name]"></td>
+						<td>
+							<div class="hide">
+								<input type="text" class="rec_id" org_name="process[][id]" value="">
+								<input type="text" class="del_flg" org_name="process[][del_flg]" value="0">
+							</div>
+							<button class="delete"></button>
+							<button class="up"></button>
+							<button class="down"></button>
+						</td>
+					</tr>
+				</table>
+			</div><!-- mst_process_wrap -->
+
+
+
+			<div class="mst_table box_margin">
+				<table id="mst_label">
+					<caption>凡例</caption>
+					<thead>
+						<tr>
+							<th>コード</th>
+							<th>凡例名</th>
+							<th>背景色</th>
+							<th>文字色</th>
+							<th>操作</th>
+						</tr>
+					</thead>
+					<tbody class="list">
+						<tr>
+							<td><input type="text" class="full" name="label[][code]" value="1" readonly></td><!-- 1,9だけ　readonly　属性をつける -->
+							<td><input type="text" class="full" name="label[][name]"></td>
+							<td>
+								<input type="text" class="color_code" placeholder="#FFFFFF" maxlength="7"><!-- 色コード表示用 name属性はつけない -->
+								<input type="color" name="label[][bgc]" class="color_picker" value="#FFFFFF"><!-- 色コード指定　name属性をつける -->
+							</td>
+							<td>
+								<input type="text" class="color_code" placeholder="#000000" maxlength="7">
+								<input type="color" name="label[][txc]" class="color_picker" value="#000000">
+							</td>
+							<td>
+								<div class="hide">
+									<input type="text" class="full sort" name="label[][sort]" value="0" readonly>
+									<input type="text" class="rec_id" name="label[][id]" value="1">
+									<input type="text" class="del_flg" name="label[][del_flg]" value="0">
+								</div>
+								<button class="delete invisible"></button>
+								<button class="up"></button>
+								<button class="down"></button>
+							</td>
+						</tr>
+						<tr>
+							<td><input type="text" class="full" name="label[][code]" value="9" readonly></td>
+							<td><input type="text" class="full" name="label[][name]"></td>
+							<td>
+								<input type="text" class="color_code" placeholder="#FFFFFF" maxlength="7">
+								<input type="color" name="label[][bgc]" class="color_picker" value="#FFFFFF">
+							</td>
+							<td>
+								<input type="text" class="color_code" placeholder="#000000" maxlength="7">
+								<input type="color" name="label[][txc]" class="color_picker" value="#000000">
+							</td>
+							<td>
+								<div class="hide">
+									<input type="text" class="full sort" name="label[][sort]" value="0" readonly>
+									<input type="text" class="rec_id" name="label[][id]" value="9">
+									<input type="text" class="del_flg" name="label[][del_flg]" value="0">
+								</div>
+								<button class="delete invisible"></button>
+								<button class="up"></button>
+								<button class="down"></button>
+							</td>
+						</tr>
+						<tr>
+							<td><input type="text" class="full" name="label[][code]" value="2"></td>
+							<td><input type="text" class="full" name="label[][name]"></td>
+							<td>
+								<input type="text" class="color_code" placeholder="#FFFFFF" maxlength="7">
+								<input type="color" name="label[][bgc]" class="color_picker" value="#FFFFFF">
+							</td>
+							<td>
+								<input type="text" class="color_code" placeholder="#000000" maxlength="7">
+								<input type="color" name="label[][txc]" class="color_picker" value="#000000">
+							</td>
+							<td>
+								<div class="hide">
+									<input type="text" class="full sort" name="label[][sort]" value="0" readonly>
+									<input type="text" class="rec_id" name="label[][id]" value="2">
+									<input type="text" class="del_flg" name="label[][del_flg]" value="0">
+								</div>
+								<button class="delete"></button>
+								<button class="up"></button>
+								<button class="down"></button>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+				<button class="insert"></button>
+				<table class="cache"></table>
+				<table class="template">
+					<tr>
+						<td><input type="text" class="full" org_name="label[][code]" value=""></td>
+						<td><input type="text" class="full" org_name="label[][name]"></td>
+						<td>
+							<input type="text" class="color_code" placeholder="#FFFFFF" maxlength="7">
+							<input type="color" org_name="label[][bgc]" class="color_picker" value="#FFFFFF">
+						</td>
+						<td>
+							<input type="text" class="color_code" placeholder="#000000" maxlength="7">
+							<input type="color" org_name="label[][txc]" class="color_picker" value="#000000">
+						</td>
+						<td>
+							<div class="hide">
+								<input type="text" class="full sort" org_name="label[][sort]" value="0" readonly>
+								<input type="text" class="rec_id" org_name="label[][id]" value="">
+								<input type="text" class="del_flg" org_name="label[][del_flg]" value="0">
+							</div>
+							<button class="delete"></button>
+							<button class="up"></button>
+							<button class="down"></button>
+						</td>
+					</tr>
+				</table>
+			</div>
+		</form>
+
+		<h3>停止コード振り分けマスタ出力</h3>
+		<div class="file_wrap">
+			<a class="button" href="https://ultimorx.com/sample/export.php"><i class="icon icon-download"></i>停止コード振り分け出力</a>
+			<!--
+			POST送信してエクスポートする場合に使用
+			<button class="button" id="export_stop_code"><i class="icon icon-download"></i>停止コード振り分け出力</button>
+			<form id="from_export_stop_code" class="hide" method="post" action="https://ultimorx.com/sample/export.php">
+			</form>
+			-->
+		</div>
+
+		<h3>停止コード振り分けマスタ取込</h3>
+		<div class="file_wrap">
+			<div id="import_wrap">
+				<div id="import_drop"><strong>ファイル選択</strong><br><br>枠内にドラッグ＆ドロップまたは、クリックでファイル選択</div>
+				<p id="import_filename"></p>
+				<button id="save_import_file" class="button disabled"><i class="icon icon-upload"></i>停止コード振り分け取込</button>
+				<button class="test_post" ref_id="from_import_stop_code"></i>停止コード振り分け取込（POSTテスト）</button>
+			</div>
+		</div>
+		<form id="from_import_stop_code" class="hide" method="post" enctype="multipart/form-data" action="https://ultimorx.com/sample/json.php?result=success&message=ファイル取り込みに成功しました">
+			<input type="file" name="import" id="import_file">
+		</form>
+		<!--
+		<form id="from_import_stop_code" class="hide" method="post" enctype="multipart/form-data" action="https://ultimorx.com/sample/json.php?result=error">
+			<input type="file" name="import" id="import_file">
+		</form>
+		 -->
+	</main>
+
+	<div id="modal_result" class="modal close" style="display: none;">
+		<div class="content">
+			<span class="float_r close"><i class="icon icon-cancel"></i>閉じる</span>
+			<h3 class="header">保存結果</h3>
+			<ul></ul>
+			<div class="next_wrap">
+				<a class="button ok" org_href="monitor.html"></a>
+			</div>
+		</div>
+	</div>
+
+</body>
+</html>

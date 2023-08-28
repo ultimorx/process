@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0">
+	<meta name="description" content="" />
+	<title>工程管理モニターサンプル</title>
+	<link rel="stylesheet" href="css/monitor.css">
+	<link rel="stylesheet" href="css/parts_navi.css">
+	<link rel="stylesheet" href="css/fontello.css">
+	<link rel="stylesheet" href="css/jquery-ui.min.1.12.1.css">
+	<script src="js/jquery-2.2.4.min.js"></script>
+	<script src="js/jquery-ui.min.1.12.1.js"></script>
+	<script src="js/jquery.ui.datepicker-ja.min.js"></script>
+	<script src="js/monitor.js"></script>
+	<script src="js/parts_navi.js"></script>
+	<style>
+	/* マスタで登録内容を出力 */
+	.label1 { background-color: #00FF00 ! important; color: #000  ! important;}
+	.label1 + .job { color: #000 !important; }
+	.label2 { background-color: #FFA500 ! important; color: #000 ! important; }
+	.label2 + .job { color: #000 !important; }
+	.label3 { background-color: #00FFFF ! important; color: #000 ! important; }
+	.label3 + .job { color: #000 !important; }
+	.label4 { background-color: #FF0000 ! important; color: #FFF ! important; }
+	.label4 + .job { color: #FFF !important; }
+	.label5 { background-color: #5C6BC0 ! important; color: #FFF ! important; }
+	.label5 + .job { color: #FFF !important; }
+	.label6 { background-color: #FF00FF ! important; color: #FFF ! important; }
+	.label6 + .job { color: #FFF !important; }
+	.label7 { background-color: #9FA8DA ! important; color: #000 ! important; }
+	.label7 + .job { color: #000 !important; }
+	</style>
+</head>
+
+<body>
+	<div id="mode_monitor">
+
+		<div id="parts_navi">
+			<nav>
+				<i id="menu_open" class="icon icon-menu"></i>
+				<span id="system">
+					Sample System
+				</span>
+			</nav>
+			<div id="menu_wrap">
+				<menu>
+					<li id="menu_close">MENU<i class="icon icon-left-1"></i></li>
+					<li><a href="./monitor.html"><i class="icon icon-right-dir"></i>工程管理</a></li>
+					<li><a href="./master.html" id="menu_master"><i class="icon icon-right-dir"></i>各種設定</a></li>
+				</menu>
+			</div>
+		</div>
+
+
+		<header>
+			<h1>工程管理</h1>
+			<span id="version">Ver1.0.0</span>
+			<div id="box_wrap">
+				<div id="search_wrap" class="box">
+					<input type="checkbox" id="manual_search"><label for="manual_search">手動検索</label>
+					<div id="auto_search_wrap">
+						<span class="update_datetime"></span>
+					</div>
+					<div id="manual_search_wrap">
+						<input id="datepicker">
+						<select id="workshift">
+							<option value="1">2交代制ー昼勤</option>
+							<option value="2">2交代制ー夜勤あいうえおかきくけこ</option>
+						</select>
+					</div>
+				</div>
+				<div id="label_wrap" class="box">
+					<span id="label_not_found" class="hide">凡例が未登録です。</span>
+					<div id="labels">
+						<span class="label1">稼働</span>
+						<span class="label2">段替</span>
+						<span class="label3">休憩</span>
+						<span class="label4">異常停止</span>
+						<span class="label5">計画停止</span>
+						<span class="label6">日常点検</span>
+						<span class="label7">その他</span>
+					</div>
+				</div>
+				<div id="progress_wrap" class="box">
+					<span class="progress nomal">正常(±10)</span>
+					<span class="progress ahead">進み(+10以上)</span>
+					<span class="progress behind">遅れ(-10以上)</span>
+				</div>
+			</div>
+		</header>
+
+		<table id="timetable">
+			<thead class="fixed">
+				<tr>
+					<th></th>
+					<th></th>
+					<th class="cell_bg times">
+						<div id="hours" start_hour="" finish_hour=""></div>
+						<span class="line" id="start_line"></span>
+						<span class="line" id="finish_line"></span>
+						<span class="line" id="current_line"></span>
+					</th>
+					<th class="cell_bg">計画数(直) / 実績数(進捗)</td>
+				</tr>
+			</thead>
+		</table>
+
+		<table id="template">
+			<tbody class="rec_plan_real">
+				<tr class="plan">
+					<td rowspan="2" class="name cell_bg"></td>
+					<td class="type">計画</td>
+					<td class="jobs"></td>
+					<td class="qty">
+						<span class="main_qty plan_qty">
+							<span class="qty">0</span>
+							<span class="unit"></span>
+						</span>
+						<span class="sub_qty plan_qty">
+							<span class="qty">0</span>
+							<span class="unit"></span>
+						</span>
+					</td>
+				</tr>
+				<tr class="real">
+					<td class="type">生産<br>実績</td>
+					<td class="jobs"></td>
+					<td class="qty progress nomal">
+						<span class="main_qty real_qty">
+							<span class="qty">0</span>
+							<span class="unit"></span>
+						</span>
+						<span class="sub_qty real_qty">
+							<span class="qty">0</span>
+							<span class="unit"></span>
+						</span>
+					</td>
+				</tr>
+			</tbody>
+			<tbody class="rec_real">
+				<tr class="real">
+					<td class="name cell_bg"></td>
+					<td class="type">生産<br>実績</td>
+					<td class="jobs"></td>
+					<td class="qty progress nomal">
+						<span class="main_qty real_qty">
+							<span class="qty">0</span>
+							<span class="unit"></span>
+						</span>
+						<span class="sub_qty real_qty">
+							<span class="qty">0</span>
+							<span class="unit"></span>
+						</span>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+
+		<footer>
+			<span class="update_datetime"></span>
+		</footer>
+	</div><!-- mode_monitor -->
+
+
+
+
+	<div id="mode_select">
+		<div id="select_factory">
+			<h3>工場選択</h3>
+			<label><input type="radio" name="factory" ref_id="factory_1">A工場</label>
+			<label><input type="radio" name="factory" ref_id="factory_2">B工場</label>
+			<label><input type="radio" name="factory" ref_id="factory_3">C工場</label>
+			<label><input type="radio" name="factory" ref_id="factory_4">D工場</label>
+		</div>
+
+		<div id="select_board">
+			<h3>設定名選択</h3>
+			<div id="factory_1" class="board_list">
+				<a href="?id=1">A工場1F〇〇課</a>
+				<a href="?id=2">A工場1F△△課</a>
+				<a href="?id=3">A工場1F■■課</a>
+				<a href="?id=21">A工場2F〇〇課</a>
+				<a href="?id=22">A工場2F△△課</a>
+				<a href="?id=23">A工場2F■■課</a>
+				<a href="?id=31">A工場3F〇〇課</a>
+				<a href="?id=32">A工場3F△△課</a>
+				<a href="?id=33">A工場3F■■課</a>
+				<a href="?id=41">A工場4F〇〇課</a>
+				<a href="?id=42">A工場4F△△課</a>
+				<a href="?id=43">A工場4F■■課</a>
+				<a href="?id=51">A工場5F〇〇課</a>
+				<a href="?id=52">A工場5F△△課</a>
+				<a href="?id=53">A工場5F■■課</a>
+			</div>
+			<div id="factory_2" class="board_list">
+				<a href="?id=4">B工場1F〇〇課</a>
+				<a href="?id=5">B工場1F△△課</a>
+				<a href="?id=6">B工場1F■■課</a>
+			</div>
+			<div id="factory_3" class="board_list">
+				<a href="?id=7">C工場1F〇〇課</a>
+				<a href="?id=8">C工場1F△△課</a>
+				<a href="?id=9">C工場1F■■課</a>
+			</div>
+			<div id="notfound" class="board_list">
+				<p class="txt_c">設定名が登録されていません</p>
+			</div>
+		</div>
+
+		<div>
+			<h3>マスタ</h3>
+			<a href="./master.html" class="basic">各種設定</a>
+		</div>
+	</div><!-- mode_select -->
+</body>
+</html>

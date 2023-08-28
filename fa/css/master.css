@@ -1,0 +1,387 @@
+body {
+	padding: 0px;
+	margin: 0px;
+	position: relative;
+}
+
+.container {
+	width: 750px;
+	margin: auto;
+	padding: 10px;
+}
+
+button,
+.button {
+	display: inline-block;
+	background-color: #DDDDDD; /* F0F0F0 */
+	color: #333;
+	border-color: #333;
+	border: 0;
+	padding: 3px 5px;
+	margin: 6px 0 0 0;
+	border-radius: 12px;
+	text-decoration: none;
+	font-size: 14px;
+	line-height: 22px;
+	text-align: center;
+	cursor: pointer;
+}
+
+button:not(.disabled):hover,
+.button:not(.disabled):hover {
+	background-color: #666;
+	color: #FFF;
+}
+
+button.disabled,
+.button.disabled {
+	cursor: inherit;
+}
+
+.button.save {
+	background-color: #2184CF;
+	color: #FFF;
+	box-shadow: 0 0 0 0 rgba(34,36,38,.15) inset;
+}
+
+.button.save:hover {
+	background-color: #6EB4E7;
+}
+
+.hide {
+	display: none !important;
+}
+
+
+.txt_c {
+	text-align: center;
+}
+
+.txt_r {
+	text-align: right;
+}
+
+.float_r {
+	float: right;
+}
+
+.close {
+	cursor: pointer;
+}
+
+.success {
+	color: #16ab39;
+}
+ul.success {
+	font-size: 20px;
+	text-align: center;
+	list-style-type: none;
+	padding: 0;
+}
+
+.error {
+	color: #db2828;
+}
+
+h2, h3, h4, h5, h6 {
+	margin: 15px 10px;
+}
+
+
+
+header {
+	background-color: #FFFFFF;
+	border: 1px solid #DDD;
+	box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.2);
+	height: 60px;
+	position: fixed;
+	width: 100%;
+	top: 0;
+	left: 0;
+	z-index: 10;
+}
+header h1 {
+	margin: 0;
+	display: inline-block;
+}
+header .button {
+	float: right;
+	width: 150px;
+	padding: 10px 12px;
+	font-size: 18px;
+	margin: 0 5px;
+}
+
+main {
+	margin-top: 70px !important;
+}
+
+form {
+	margin: 10px;
+}
+
+form .item {
+	display: flex;
+	align-items: baseline;
+	min-height: 50px;
+	margin: 0 0 5px 0;
+}
+form .item .key {
+	font-weight: bold;
+	width: 25%;
+}
+form .item .val {
+	width: 75%;
+}
+form input, form select, form label {
+	font-size: 18px;
+	padding: 6px;
+}
+form input[type="text"].full {
+	width: calc(100% - 20px);
+}
+form td input[type="text"].full {
+	width: calc(100% - 20px);
+}
+
+form input[type="checkbox"],
+form input[type="radio"] {
+	transform: scale(1.85);
+	margin-right: 8px;
+	vertical-align: inherit !important;
+}
+form input[type="checkbox"]:checked + label,
+form input[type="radio"]:checked + label {
+	font-weight: bold;
+	background-color: aliceblue;
+}
+form input[type="checkbox"].hide + label,
+form input[type="radio"].hide + label {
+	display: none;
+}
+
+form input[type="number"] {
+	width: 60px;
+	text-align: right;
+	font-size: 22px;
+	padding: 4px 2px;
+	margin: 0 5px;
+}
+
+form table {
+	width: 100%;
+	background-color: #FFF;
+}
+form table caption {
+	text-align: left;
+	font-weight: bold;
+}
+
+form .box_margin {
+	margin: 30px 0 0 0;
+}
+
+form table,
+form td,
+form th {
+	border-collapse: collapse;
+	border:1px solid #333;
+}
+
+form tr.confirm {
+	/* background-color: #FEF6F5; 薄い*/
+	background-color: #F8C8C2;
+
+	color: #922D2B;
+}
+
+form th {
+	font-weight: bold;
+	background-color: #F0F0F0;
+}
+
+form td,
+form th {
+	padding: 4px;
+	text-align: center;
+}
+
+form .mst_table {
+
+}
+
+form .mst_table .sort{
+	text-align: center;
+}
+
+form .mst_table .insert {
+	float: right;
+}
+form .mst_table .insert::before {
+	content: '行追加';
+}
+form .mst_table .delete::before {
+	content: '行削除';
+}
+form .mst_table .up::before {
+	content: '上へ';
+}
+form .mst_table .down::before {
+	content: '下へ';
+}
+
+form .mst_table .cache {
+	/* 処理状況を確認するため、一時的に表示する */
+	/* display: none; */
+}
+
+form .mst_table .template {
+	display: none;
+}
+
+form table#mst_process th:nth-child(1) {
+	width: 50px;
+}
+form table#mst_process th:nth-child(2) {
+	width: 100px;
+}
+form table#mst_process th:nth-child(3) {
+	width: auto;
+}
+form table#mst_process th:nth-child(4) {
+	width: 155px;
+}
+
+form table#mst_label th:nth-child(1) {
+	width: 50px;
+}
+form table#mst_label th:nth-child(2) {
+	width: auto;
+}
+form table#mst_label th:nth-child(3),
+form table#mst_label th:nth-child(4) {
+	width: 171px;
+}
+form table#mst_label th:nth-child(5) {
+	width: 155px;
+}
+
+
+form table#mst_label td:nth-child(1) input {
+	text-align: center;
+}
+
+form .mst_table .list tr .invisible,
+form .mst_table .list tr:first-child .up,
+form .mst_table .list tr:last-child .down {
+	visibility: hidden;
+}
+
+form input[readonly] {
+	border: none;
+}
+
+form input.color_code {
+	width: 76px;
+	text-align: center;
+}
+
+form input.color_picker {
+	display: inline-block;
+	width: 50px;
+	padding: 0;
+	border: 1px solid #333;
+	cursor: pointer;
+}
+
+.file_wrap {
+	margin: 0 50px 35px;
+}
+
+.file_wrap .button {
+	width: 100%;
+	display: block;
+	margin: 15px 0 15px 0;
+	padding: 20px 0;
+	font-size: 18px;
+}
+
+.file_wrap #import_filename {
+	margin: 5px 0 5px 0;
+	padding: 0;
+}
+
+.file_wrap #import_filename::before {
+	content: 'ファイル名：';
+}
+
+.file_wrap #import_filename:empty::after {
+	content: '未選択';
+}
+
+.file_wrap #import_drop {
+	text-align: center;
+	background-color: #DDDEF2; /* B5B7E2  DDDEF2  ECEDF7 */
+	padding: 50px;
+	border: 2px dashed #333;
+	cursor: pointer;
+}
+
+.file_wrap #import_drop:hover {
+	background-color: #ECEDF7;
+}
+
+.modal {
+	position: fixed;
+	top: -80px;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	margin: 0;
+	padding: 0 0 80px 0;
+	background-color:rgba(0, 0, 0, 0.75);
+	z-index: 100;
+	display: flex;
+	align-items: center;
+  justify-content: center;
+	/*
+	transform-origin: center center;
+	flex-direction: column;
+	*/
+}
+
+.modal .content {
+	position: absolute;
+	border: none;
+	box-shadow: 1px 3px 3px 0 rgba(0,0,0,.2), 1px 3px 15px 2px rgba(0,0,0,.2);
+	transform-origin: 50% 25%;
+	flex: 0 0 auto;
+	background-color: #FFF;
+	width: 600px;
+	padding: 20px;
+	max-height: 500px;
+	border-radius: 8px;
+}
+
+.modal .content .next_wrap {
+	display: none;
+	margin: auto 80px;
+}
+
+.modal .content .ok.button {
+	width: 100%;
+	display: block;
+	margin: 35px 0;
+	padding: 20px 0;
+	font-size: 18px;
+	background-color: #21ba45;
+	color: #fff;
+	text-shadow: none;
+}
+.modal .content .ok.button:hover {
+	background-color: #16ab39;
+}
+
+.modal .content .ok.button::before {
+	content: 'OK';
+}
